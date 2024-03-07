@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex justify-center items-center bg-[#EEEEEE] min-h-screen font-sans relative">
+    <form class="max-w-[350px] h-[275px] bg-white shadow-lg rounded-xl flex flex-col overflow-hidden" action="app.js" method="get" id="form" onsubmit="return false;">
+        <!-- Заголовок  -->
+        <header class="border-b border-b-[#EEEEEE] h-[49px] flex justify-center items-center relative px-[15px] ">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512" class="absolute left-[15px] top-[8px] cursor-pointer hidden" width="15px" id="back">
+                <path
+                    d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+            </svg>
+            <h2 class="text-lg">Регистрация</h2>
+        </header>
+
+        <!-- контент -->
+        <div class="flex h-full overflow-hidden">
+
+            <!-- Обёртка, её я translate -->
+            <div class="flex h-full relative transition-transform" id="content">
+                <!-- ФИО -->
+                <div class="px-[15px] shrink-0  w-full self-stretch flex flex-col justify-center gap-7">
+                    <input class="border w-full rounded-md h-[39px] border bg-[#EEEEEE] indent-2" type="text" name="surname" placeholder="Фамилия">
+                    <input class="border w-full rounded-md h-[39px] border bg-[#EEEEEE] indent-2"" type="text" name="oleg" placeholder="Имя">
+                </div>
+    
+                <!-- Пароль -->
+                <div class="px-[15px] shrink-0  w-full self-stretch flex flex-col justify-center gap-7">
+                    <input class="border w-full rounded-md h-[39px] border bg-[#EEEEEE] indent-2 type="email" name="email" id="" autocomplete="off" placeholder="example@mail.ru" title="Я хз зачем я это сделал">
+                    <input class="border w-full rounded-md h-[39px] border bg-[#EEEEEE] indent-2 type="password" name="password" id="" placeholder="Пароль">
+                </div>
+            </div>
+
+        </div>
+
+        <footer class="flex  items-center mt-auto h-[69px] px-[15px] pb-[45px] flex-col gap-4 flex">
+            <div class="w-full relative ">
+                <hr class="w-full h-[1px]">
+                <p class="absolute text-sm text-center bg-white top-0 -translate-y-1/2 -translate-x-1/2 left-1/2 px-3">Шаг <span id="step">1</span> из 2</p>
+            </div>
+            <input class="bg-emerald-400 hover:bg-emerald-700 w-full py-[5px] rounded-md text-white tracking-[0.03em] font-sans" type="submit" value="Продолжить"  data-step="1" id="submit">
+        </footer>
+    </form>
+
+    <!-- Сюда летят уведомления -->
+    <div class="absolute bottom-4 right-4 w-[300px] min-h-[100px] flex flex-col justify-center gap-5 items-center  px-[10px]">
+        <!-- Успех -->
+        <!-- <div class="w-full rounded-md flex justify-start flex-col gap-2 bg-white shadow-md py-[10px] min-h-[49px] relative overflow-hidden">
+            <div class="border-b border-b-[#EEEEEE] px-[15px] pb-[5px]">
+                <h4 class="text-emerald-300 text-md">Успех!</h4>
+            </div>
+            <p class="text-sm px-[15px]">Пользователь зарегистрирован!</p>
+            <svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 384 512"
+                class="absolute right-[15px] top-[13.5px] cursor-pointer"
+                width="15px"
+                onclick="this.parentNode.remove()"
+                >
+                <path
+                    d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+            </svg>
+        </div> -->
+        <!-- Провал -->
+        <!-- <div
+            class="w-full rounded-md flex justify-start flex-col gap-2 bg-white shadow-md py-[10px] min-h-[49px] relative overflow-hidden">
+            <div class="border-b border-b-[#EEEEEE] px-[15px] pb-[5px]">
+                <h4 class="text-red-300 text-md">Провал!</h4>
+            </div>
+            <p class="text-sm px-[15px]">Что-то пошло не так!</p>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"
+                class="absolute right-[15px] top-[13.5px] cursor-pointer" width="15px" onclick="this.parentNode.remove()">
+                <path
+                    d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+            </svg>
+        </div> -->
+    </div>
+    <script src="form.js"></script>
+</body>
+</html>
