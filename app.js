@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import mysql from "mysql2";
-import dbSetting from "./database";
+import dbSetting from "./database.js";
 
 // Настроечки
 const app = express(),
