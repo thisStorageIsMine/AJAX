@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import mysql from "mysql2";
+import dbSetting from "./database";
 
 // Настроечки
 const app = express(),
@@ -14,10 +15,10 @@ app.use(cors());
 
 //MYSQL - настроечки
 const pool = mysql.createPool({
-  host: "127.0.0.1", // a.k.a localhost
-  user: "user",
-  password: "2861",
-  database: 'newbd'
+  host: dbSetting.HOST, // a.k.a localhost
+  user: dbSetting.USER,
+  password: dbSetting.PASSWORD,
+  database: dbSetting.DATABASE
 }).promise();
 
 //При POST запросе на /users
